@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+Kaiburr Task 3 – Web UI (React + TypeScript + Ant Design)
+Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is the frontend interface for the Job Manager REST API developed in Task 1.
+It allows users to create, view, search, run, and delete tasks stored in the backend MongoDB database through RESTful APIs.
 
-Currently, two official plugins are available:
+Built using React 19 (Vite + TypeScript) and Ant Design, this web app offers a clean and responsive UI connected to the backend service running on Kubernetes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech Stack
+Category	Technology
+Frontend Framework	React 19 (Vite + TypeScript)
+UI Library	Ant Design v5
+HTTP Client	Axios
+Styling	Ant Design Components + Custom CSS
+Backend API	Spring Boot (Task 1)
+Database	MongoDB (in Kubernetes Pod)
 
-## React Compiler
+Setup Instructions
+1️.Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Node.js v18+
 
-## Expanding the ESLint configuration
+NPM v9+
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Backend (Task 1) running at:
+http://localhost:30085/v1/tasks
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2️.Clone Repository
+git clone https://github.com/<your-username>/kaiburr-task3-webui.git
+cd kaiburr-task3-webui
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3️.Install Dependencies
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4️.Run the Application
+npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Then open your browser at:
+http://localhost:5173
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🔗 API Endpoints Used
+Operation	Method	Endpoint	Description
+Get All Tasks	GET	/v1/tasks	Fetch all tasks
+Search by Name	GET	/v1/tasks/find?name=...	Search for tasks
+Create Task	PUT	/v1/tasks	Add a new task
+Run Task	PUT	/v1/tasks/{id}/execution	Execute task command
+Delete Task	DELETE	/v1/tasks/{id}	Delete a task
+Screenshots
+Task List View
+
+Displays all tasks fetched from the backend.
+
+
+Search Task
+
+Shows search functionality with filtered results.
+
+
+Execute Task
+
+Displays output modal after running a task command.
+
+
+Outcome
+
+This project delivers a fully functional React + Ant Design frontend that integrates seamlessly with the Spring Boot + MongoDB backend.
+It demonstrates API integration, responsive design, and user-friendly task management.
